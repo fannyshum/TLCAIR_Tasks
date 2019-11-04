@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .vega-actions a {
+        margin-right: 12px;
+        color: #757575;
+        font-weight: normal;
+        font-size: 13px;
+    }
+    .error {
+        color: red;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-lite@3.4.0"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-embed@4"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"width": 400, "height": 300}, "mark": {"tooltip": null}}, "vconcat": [{"mark": "point", "encoding": {"color": {"condition": {"type": "nominal", "field": "App", "selection": "selector035"}, "value": "white"}, "tooltip": [{"type": "nominal", "field": "App"}, {"type": "quantitative", "field": "Number of Trips"}], "x": {"type": "temporal", "axis": {"format": "%A %d", "title": "DATE"}, "field": "Day"}, "y": {"type": "quantitative", "field": "Number of Trips"}}, "selection": {"selector035": {"type": "multi", "encodings": ["x"]}}, "title": "Total Airport Pickups in January 8 - 15, 2018 (Post Duplicate)", "width": 600}, {"mark": "bar", "encoding": {"color": {"condition": {"type": "nominal", "field": "App", "selection": "selector035"}, "value": "lightgray"}, "tooltip": {"type": "quantitative", "aggregate": "sum", "field": "Number of Trips", "title": "Total Count for 0      Lyft\n1      Lyft\n2      Lyft\n3      Lyft\n4      Lyft\n5      Lyft\n6      Lyft\n7     Other\n8     Other\n9     Other\n10    Other\n11    Other\n12    Other\n13    Other\n14    Other\n15     Uber\n16     Uber\n17     Uber\n18     Uber\n19     Uber\n20     Uber\n21     Uber\n22     Uber\n23      Via\n24      Via\n25      Via\n26      Via\n27      Via\n28      Via\n29      Via\nName: App, dtype: object"}, "x": {"type": "nominal", "field": "App", "sort": {"field": "sum(Number of Trips)", "order": "ascending"}}, "y": {"type": "quantitative", "aggregate": "sum", "field": "Number of Trips"}}, "height": 200, "selection": {"selector035": {"type": "multi", "encodings": ["x"]}}, "width": 600}], "data": {"name": "data-70b6410d6e9d79d998fa60e4221e34cd"}, "$schema": "https://vega.github.io/schema/vega-lite/v3.4.0.json", "datasets": {"data-70b6410d6e9d79d998fa60e4221e34cd": [{"App": "Lyft", "Day": "01/08/2018", "Number of Trips": 4001}, {"App": "Lyft", "Day": "01/09/2018", "Number of Trips": 3326}, {"App": "Lyft", "Day": "01/10/2018", "Number of Trips": 3043}, {"App": "Lyft", "Day": "01/11/2018", "Number of Trips": 3821}, {"App": "Lyft", "Day": "01/12/2018", "Number of Trips": 4029}, {"App": "Lyft", "Day": "01/13/2018", "Number of Trips": 3984}, {"App": "Lyft", "Day": "01/14/2018", "Number of Trips": 3591}, {"App": "Other", "Day": "01/08/2018", "Number of Trips": 2016}, {"App": "Other", "Day": "01/09/2018", "Number of Trips": 1872}, {"App": "Other", "Day": "01/10/2018", "Number of Trips": 1813}, {"App": "Other", "Day": "01/11/2018", "Number of Trips": 2163}, {"App": "Other", "Day": "01/12/2018", "Number of Trips": 2058}, {"App": "Other", "Day": "01/13/2018", "Number of Trips": 1655}, {"App": "Other", "Day": "01/14/2018", "Number of Trips": 1449}, {"App": "Other", "Day": "01/15/2018", "Number of Trips": 2}, {"App": "Uber", "Day": "01/08/2018", "Number of Trips": 10443}, {"App": "Uber", "Day": "01/09/2018", "Number of Trips": 8953}, {"App": "Uber", "Day": "01/10/2018", "Number of Trips": 8070}, {"App": "Uber", "Day": "01/11/2018", "Number of Trips": 10209}, {"App": "Uber", "Day": "01/12/2018", "Number of Trips": 9901}, {"App": "Uber", "Day": "01/13/2018", "Number of Trips": 8966}, {"App": "Uber", "Day": "01/14/2018", "Number of Trips": 8576}, {"App": "Uber", "Day": "01/15/2018", "Number of Trips": 1}, {"App": "Via", "Day": "01/08/2018", "Number of Trips": 264}, {"App": "Via", "Day": "01/09/2018", "Number of Trips": 171}, {"App": "Via", "Day": "01/10/2018", "Number of Trips": 145}, {"App": "Via", "Day": "01/11/2018", "Number of Trips": 154}, {"App": "Via", "Day": "01/12/2018", "Number of Trips": 150}, {"App": "Via", "Day": "01/13/2018", "Number of Trips": 156}, {"App": "Via", "Day": "01/14/2018", "Number of Trips": 216}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div class="error" style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>

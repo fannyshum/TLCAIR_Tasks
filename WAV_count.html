@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .vega-actions a {
+        margin-right: 12px;
+        color: #757575;
+        font-weight: normal;
+        font-size: 13px;
+    }
+    .error {
+        color: red;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-lite@3.4.0"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-embed@4"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"width": 400, "height": 300}, "mark": {"tooltip": null}}, "vconcat": [{"mark": "line", "encoding": {"x": {"type": "temporal", "field": "Day", "scale": {"domain": {"selection": "selector051"}}}, "y": {"type": "quantitative", "field": "Count", "title": " "}}, "height": 240, "selection": {"Company": {"type": "single", "fields": ["App"], "on": "doubleclick", "clear": false, "bind": {"input": "select", "options": ["Uber", "Lyft", "Via", "Juno", "Other"]}, "init": {"App": "Uber"}}}, "title": "WAV Trip Trend By App", "transform": [{"filter": {"selection": "Company"}}], "width": 600}, {"mark": "line", "encoding": {"x": {"type": "temporal", "field": "Day", "scale": {"domain": {"selection": "selector051"}}}, "y": {"type": "quantitative", "field": "Count", "title": " "}}, "height": 60, "selection": {"Company": {"type": "single", "fields": ["App"], "on": "doubleclick", "clear": false, "bind": {"input": "select", "options": ["Uber", "Lyft", "Via", "Juno", "Other"]}, "init": {"App": "Uber"}}, "selector051": {"type": "interval", "encodings": ["x"], "clear": false}}, "title": "WAV Trip Trend By App", "transform": [{"filter": {"selection": "Company"}}, {"filter": {"selection": "Company"}}], "width": 600}], "data": {"name": "data-71d7bd1cc09f7a94efd882c412ea7fae"}, "$schema": "https://vega.github.io/schema/vega-lite/v3.4.0.json", "datasets": {"data-71d7bd1cc09f7a94efd882c412ea7fae": [{"Day": "01/08/2018", "App": "Lyft", "Count": 0.0, "Type": "WAV"}, {"Day": "01/09/2018", "App": "Lyft", "Count": 0.0, "Type": "WAV"}, {"Day": "01/10/2018", "App": "Lyft", "Count": 0.0, "Type": "WAV"}, {"Day": "01/11/2018", "App": "Lyft", "Count": 0.0, "Type": "WAV"}, {"Day": "01/12/2018", "App": "Lyft", "Count": 0.0, "Type": "WAV"}, {"Day": "01/13/2018", "App": "Lyft", "Count": 0.0, "Type": "WAV"}, {"Day": "01/14/2018", "App": "Lyft", "Count": 0.0, "Type": "WAV"}, {"Day": "01/08/2018", "App": "Other", "Count": 0.7, "Type": "WAV"}, {"Day": "01/09/2018", "App": "Other", "Count": 0.5, "Type": "WAV"}, {"Day": "01/10/2018", "App": "Other", "Count": 0.5, "Type": "WAV"}, {"Day": "01/11/2018", "App": "Other", "Count": 0.6, "Type": "WAV"}, {"Day": "01/12/2018", "App": "Other", "Count": 0.5, "Type": "WAV"}, {"Day": "01/13/2018", "App": "Other", "Count": 0.5, "Type": "WAV"}, {"Day": "01/14/2018", "App": "Other", "Count": 0.4, "Type": "WAV"}, {"Day": "01/15/2018", "App": "Other", "Count": 0.0, "Type": "WAV"}, {"Day": "01/08/2018", "App": "Uber", "Count": 21.5, "Type": "WAV"}, {"Day": "01/09/2018", "App": "Uber", "Count": 19.8, "Type": "WAV"}, {"Day": "01/10/2018", "App": "Uber", "Count": 16.2, "Type": "WAV"}, {"Day": "01/11/2018", "App": "Uber", "Count": 21.9, "Type": "WAV"}, {"Day": "01/12/2018", "App": "Uber", "Count": 20.4, "Type": "WAV"}, {"Day": "01/13/2018", "App": "Uber", "Count": 19.7, "Type": "WAV"}, {"Day": "01/14/2018", "App": "Uber", "Count": 17.4, "Type": "WAV"}, {"Day": "01/15/2018", "App": "Uber", "Count": 0.0, "Type": "WAV"}, {"Day": "01/08/2018", "App": "Via", "Count": 0.0, "Type": "WAV"}, {"Day": "01/09/2018", "App": "Via", "Count": 0.0, "Type": "WAV"}, {"Day": "01/10/2018", "App": "Via", "Count": 0.0, "Type": "WAV"}, {"Day": "01/11/2018", "App": "Via", "Count": 0.0, "Type": "WAV"}, {"Day": "01/12/2018", "App": "Via", "Count": 0.0, "Type": "WAV"}, {"Day": "01/13/2018", "App": "Via", "Count": 0.0, "Type": "WAV"}, {"Day": "01/14/2018", "App": "Via", "Count": 0.0, "Type": "WAV"}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div class="error" style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>

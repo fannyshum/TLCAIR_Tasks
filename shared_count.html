@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .vega-actions a {
+        margin-right: 12px;
+        color: #757575;
+        font-weight: normal;
+        font-size: 13px;
+    }
+    .error {
+        color: red;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-lite@3.4.0"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-embed@4"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"width": 400, "height": 300}, "mark": {"tooltip": null}}, "vconcat": [{"mark": "line", "encoding": {"x": {"type": "temporal", "field": "Day", "scale": {"domain": {"selection": "selector050"}}}, "y": {"type": "quantitative", "field": "Count", "title": " "}}, "height": 240, "selection": {"Company": {"type": "single", "fields": ["App"], "on": "doubleclick", "clear": false, "bind": {"input": "select", "options": ["Uber", "Lyft", "Via", "Juno", "Other"]}, "init": {"App": "Uber"}}}, "title": "Shared Trip Trend By App", "transform": [{"filter": {"selection": "Company"}}], "width": 600}, {"mark": "line", "encoding": {"x": {"type": "temporal", "field": "Day", "scale": {"domain": {"selection": "selector050"}}}, "y": {"type": "quantitative", "field": "Count", "title": " "}}, "height": 60, "selection": {"Company": {"type": "single", "fields": ["App"], "on": "doubleclick", "clear": false, "bind": {"input": "select", "options": ["Uber", "Lyft", "Via", "Juno", "Other"]}, "init": {"App": "Uber"}}, "selector050": {"type": "interval", "encodings": ["x"], "clear": false}}, "title": "Shared Trip Trend By App", "transform": [{"filter": {"selection": "Company"}}, {"filter": {"selection": "Company"}}], "width": 600}], "data": {"name": "data-305c61d871c02169a5b6ddf3e8e29b7d"}, "$schema": "https://vega.github.io/schema/vega-lite/v3.4.0.json", "datasets": {"data-305c61d871c02169a5b6ddf3e8e29b7d": [{"Day": "01/08/2018", "App": "Lyft", "Count": 1195, "Type": "Shared"}, {"Day": "01/09/2018", "App": "Lyft", "Count": 1000, "Type": "Shared"}, {"Day": "01/10/2018", "App": "Lyft", "Count": 881, "Type": "Shared"}, {"Day": "01/11/2018", "App": "Lyft", "Count": 972, "Type": "Shared"}, {"Day": "01/12/2018", "App": "Lyft", "Count": 1060, "Type": "Shared"}, {"Day": "01/13/2018", "App": "Lyft", "Count": 1206, "Type": "Shared"}, {"Day": "01/14/2018", "App": "Lyft", "Count": 1167, "Type": "Shared"}, {"Day": "01/08/2018", "App": "Other", "Count": 115, "Type": "Shared"}, {"Day": "01/09/2018", "App": "Other", "Count": 90, "Type": "Shared"}, {"Day": "01/10/2018", "App": "Other", "Count": 87, "Type": "Shared"}, {"Day": "01/11/2018", "App": "Other", "Count": 75, "Type": "Shared"}, {"Day": "01/12/2018", "App": "Other", "Count": 96, "Type": "Shared"}, {"Day": "01/13/2018", "App": "Other", "Count": 94, "Type": "Shared"}, {"Day": "01/14/2018", "App": "Other", "Count": 87, "Type": "Shared"}, {"Day": "01/15/2018", "App": "Other", "Count": 0, "Type": "Shared"}, {"Day": "01/08/2018", "App": "Uber", "Count": 1025, "Type": "Shared"}, {"Day": "01/09/2018", "App": "Uber", "Count": 804, "Type": "Shared"}, {"Day": "01/10/2018", "App": "Uber", "Count": 723, "Type": "Shared"}, {"Day": "01/11/2018", "App": "Uber", "Count": 779, "Type": "Shared"}, {"Day": "01/12/2018", "App": "Uber", "Count": 706, "Type": "Shared"}, {"Day": "01/13/2018", "App": "Uber", "Count": 742, "Type": "Shared"}, {"Day": "01/14/2018", "App": "Uber", "Count": 861, "Type": "Shared"}, {"Day": "01/15/2018", "App": "Uber", "Count": 0, "Type": "Shared"}, {"Day": "01/08/2018", "App": "Via", "Count": 48, "Type": "Shared"}, {"Day": "01/09/2018", "App": "Via", "Count": 44, "Type": "Shared"}, {"Day": "01/10/2018", "App": "Via", "Count": 37, "Type": "Shared"}, {"Day": "01/11/2018", "App": "Via", "Count": 35, "Type": "Shared"}, {"Day": "01/12/2018", "App": "Via", "Count": 30, "Type": "Shared"}, {"Day": "01/13/2018", "App": "Via", "Count": 35, "Type": "Shared"}, {"Day": "01/14/2018", "App": "Via", "Count": 39, "Type": "Shared"}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div class="error" style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>

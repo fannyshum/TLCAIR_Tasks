@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .vega-actions a {
+        margin-right: 12px;
+        color: #757575;
+        font-weight: normal;
+        font-size: 13px;
+    }
+    .error {
+        color: red;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-lite@3.4.0"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-embed@4"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"width": 400, "height": 300}, "mark": {"tooltip": null}}, "vconcat": [{"mark": "point", "encoding": {"color": {"condition": {"type": "nominal", "field": "App", "selection": "selector025"}, "value": "white"}, "tooltip": [{"type": "nominal", "field": "App"}, {"type": "quantitative", "field": "Count"}], "x": {"type": "temporal", "axis": {"format": "%A %d", "title": "DATE"}, "field": "Day"}, "y": {"type": "quantitative", "field": "Count"}}, "selection": {"selector025": {"type": "multi", "encodings": ["x"]}}, "title": "Total Shared Rides for Airport Pickups for January 8 - 15, 2018 (Post Duplicate)", "width": 600}, {"mark": "bar", "encoding": {"color": {"condition": {"type": "nominal", "field": "App", "selection": "selector025"}, "value": "lightgray"}, "tooltip": {"type": "quantitative", "aggregate": "sum", "field": "Count", "title": "Total Count for 0      Lyft\n1      Lyft\n2      Lyft\n3      Lyft\n4      Lyft\n5      Lyft\n6      Lyft\n7     Other\n8     Other\n9     Other\n10    Other\n11    Other\n12    Other\n13    Other\n14     Uber\n15     Uber\n16     Uber\n17     Uber\n18     Uber\n19     Uber\n20     Uber\n21      Via\n22      Via\n23      Via\n24      Via\n25      Via\n26      Via\n27      Via\nName: App, dtype: object"}, "x": {"type": "nominal", "field": "App", "sort": {"field": "sum(Count)", "order": "ascending"}}, "y": {"type": "quantitative", "aggregate": "sum", "field": "Count"}}, "height": 200, "selection": {"selector025": {"type": "multi", "encodings": ["x"]}}, "width": 600}], "data": {"name": "data-7a0a1cad70b593b1096f1a3f55497d29"}, "$schema": "https://vega.github.io/schema/vega-lite/v3.4.0.json", "datasets": {"data-7a0a1cad70b593b1096f1a3f55497d29": [{"App": "Lyft", "Day": "01/08/2018", "Count": 1195}, {"App": "Lyft", "Day": "01/09/2018", "Count": 1000}, {"App": "Lyft", "Day": "01/10/2018", "Count": 881}, {"App": "Lyft", "Day": "01/11/2018", "Count": 972}, {"App": "Lyft", "Day": "01/12/2018", "Count": 1060}, {"App": "Lyft", "Day": "01/13/2018", "Count": 1206}, {"App": "Lyft", "Day": "01/14/2018", "Count": 1167}, {"App": "Other", "Day": "01/08/2018", "Count": 115}, {"App": "Other", "Day": "01/09/2018", "Count": 90}, {"App": "Other", "Day": "01/10/2018", "Count": 87}, {"App": "Other", "Day": "01/11/2018", "Count": 75}, {"App": "Other", "Day": "01/12/2018", "Count": 96}, {"App": "Other", "Day": "01/13/2018", "Count": 94}, {"App": "Other", "Day": "01/14/2018", "Count": 87}, {"App": "Uber", "Day": "01/08/2018", "Count": 1025}, {"App": "Uber", "Day": "01/09/2018", "Count": 804}, {"App": "Uber", "Day": "01/10/2018", "Count": 723}, {"App": "Uber", "Day": "01/11/2018", "Count": 779}, {"App": "Uber", "Day": "01/12/2018", "Count": 706}, {"App": "Uber", "Day": "01/13/2018", "Count": 742}, {"App": "Uber", "Day": "01/14/2018", "Count": 861}, {"App": "Via", "Day": "01/08/2018", "Count": 48}, {"App": "Via", "Day": "01/09/2018", "Count": 44}, {"App": "Via", "Day": "01/10/2018", "Count": 37}, {"App": "Via", "Day": "01/11/2018", "Count": 35}, {"App": "Via", "Day": "01/12/2018", "Count": 30}, {"App": "Via", "Day": "01/13/2018", "Count": 35}, {"App": "Via", "Day": "01/14/2018", "Count": 39}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div class="error" style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
